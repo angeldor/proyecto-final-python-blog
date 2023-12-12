@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block title %}Crea un nuevo posteo{% endblock %} 
+{% block content %}
+
+<h3>Nuevo Posteo!</h3>
+
+<form method="POST">
+  {% csrf_token %} {{form.as_p}}
+  <button class="btn btn-secondary">Guardar</button>
+
+  {% endblock %}
+</form>
