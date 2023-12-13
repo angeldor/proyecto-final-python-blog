@@ -4,7 +4,8 @@
 {% block content %}
 
 <h1>{{post.title}}<h1/>
-<small> By: {{post.author.first_name}}{{post.author.last_name}}</small></br>
+<p>By: {{post.author.first_name}}{{post.author.last_name}}</p></br>
+<a href="{% url 'edit_post' post.pk %}">Editar</a>
 <hr>
 </br>
 {{post.body}}
