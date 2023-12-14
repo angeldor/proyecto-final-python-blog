@@ -1,0 +1,13 @@
+{% extends 'base.html' %} 
+{% block title %}Inicia Sesión{% endblock %} 
+{% block content %}
+
+<h2>Inicio de Sesión</h2>
+
+<div class= "form-group">
+    <form method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <button class="btn btn-secondary">Enviar</button>
+</div>
+  {% endblock %}
+</form>
