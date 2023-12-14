@@ -9,7 +9,7 @@ class Post(models.Model):
     title_tag = models.CharField(max_length=255, default='Mi Fantastico Blog')
     subtitle = models.CharField(max_length=255, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=datetime.now(), null=False)
+    date = models.DateField(default=datetime.now(), null=False)
     body = models.TextField()
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     
