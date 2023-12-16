@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block content %}
+<main>
+    <section class="py-5">
+        <div class="container">
+            <h1 class="display-4">Sobre mi</h1>
+            <p class="lead">Este blog es el proyecto final del curso de Python de Coderhouse. Está creado por Ángel Barrios Romero, un desarrollador web con experiencia en Python, Django y Bootstrap.</p>
+            <p>En este blog, Ángel compartirá sus conocimientos y experiencias sobre Python, Django y Bootstrap. También hablará sobre otros temas relacionados con el desarrollo web.</p>
+            <p>Si estás interesado en aprender más sobre Python, Django o Bootstrap, te invitamos a visitar este blog.</p>
+        </div>
+    </section>
+    <a href="{% url 'home'%}" class= "btn btn-secondary">Volver</a>
+</main>
+{% endblock %}

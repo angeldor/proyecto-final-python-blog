@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.http import request
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from .models import Post
 from .forms import PostForm, EditForm
 from django.urls import reverse_lazy
@@ -28,3 +29,9 @@ class DeletePost(DeleteView):
     model = Post
     template_name = 'deletepost.html'
     success_url = reverse_lazy('home')
+    
+class About(TemplateView):
+    template_name= 'about.html'
+    
+def pageNotFound(request, exception):
+    return render(request,'404.html', status=404)

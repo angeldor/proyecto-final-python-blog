@@ -1,14 +1,23 @@
 {% extends 'base.html' %} {% block title %}Elimina tus posteos{% endblock %} 
 {% block content %}
 
-<h3>Eliminar tu Posteo!</h3>
 
-<div class= "form-group">
-    <form method="POST">
-    {% csrf_token %} 
-    <strong><h3>¡¿Estás seguro de borrar este Post?!</h3></strong>
-    </br>
-    <button class="btn btn-danger">Borrar</button>
-</div>
-  {% endblock %}
-</form>
+{% if user.is_authenticated %}
+    <h3>Eliminar tu Posteo!</h3>
+
+    <div class= "form-group">
+      <form method="POST">
+        {% csrf_token %} 
+        <strong><h3>¡¿Estás seguro de borrar este Post?!</h3></strong>
+        </br>
+        <button class="btn btn-danger">Borrar</button>
+      </form>
+    </div>
+
+{% else %}
+  <h2 class="p-5 m-4 bg-danger">No tienes permitido hacer eso!</h2>
+  <a href="{% url 'home'%}" class= "btn btn-secondary">Volver</a>
+
+{% endif %}
+
+{% endblock %}
