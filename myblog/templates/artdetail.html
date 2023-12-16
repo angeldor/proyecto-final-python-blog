@@ -2,6 +2,7 @@
 
 {% block title %}{{post.title_tag}}{% endblock %}
 {% block content %}
+{% load static %}
 
 <h1>{{post.title}}<h1/>
 <h4>By: {{post.author.first_name}}{{post.author.last_name}}</h4></br>
@@ -14,7 +15,7 @@
 <hr>
 </br>
 <div class="fs-5">{{post.body}}</div>
-{% comment %} <img src="{{post.image}}"> {% endcomment %}
+<img src="{% static 'static/images/CSS3_logo.svg.png'%}">
 </br></br>
 <a href="{% url 'home'%}" class= "btn btn-secondary">Back</a>
 
