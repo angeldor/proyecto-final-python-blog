@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %}Crea una nueva categoria{% endblock %} 
+{% block content %}
+
+{% if user.is_authenticated %}
+<h3>Nueva Categoría!</h3>
+
+  <div class= "form-group">
+    <form method="POST">
+      {% csrf_token %} {{form.as_p}}
+      <button class="btn btn-secondary">Guardar</button>
+    </form>
+</div>
+
+{% else %}
+
+<h2 class="p-5 m-4 bg-warning">No haz iniciado sesion!</h2>
+<a href="{% url 'home'%}" class= "btn btn-secondary">Volver</a>
+
+{% endif %}
+
+
+  {% endblock %}
