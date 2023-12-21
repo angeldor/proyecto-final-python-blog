@@ -8,7 +8,7 @@
     {{post.title}} -
     {{post.subtitle}} - {{post.author.first_name}} {{post.author.last_name}}<br/>
     {% if user.is_authenticated %}
-    {{post.category}}
+    <a href="{% url 'category' post.category %}">{{post.category}}</a>
     <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary p-1 m-3">Editar</a>
     <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger p-1 ">Borrar</a>
     {% endif %}

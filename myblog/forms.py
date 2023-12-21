@@ -11,7 +11,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag','subtitle', 'author','date', 'category', 'body','image')
+        fields = ('title', 'title_tag','subtitle', 'author','date', 'category', 'body','header_image')
         
         widgets = {
             'title': forms.TextInput(attrs= {'class': 'form-control', 'placeholder':'Aqui va el titulo de tu blog'}),
@@ -21,14 +21,12 @@ class PostForm(forms.ModelForm):
             'date': forms.DateInput(attrs= {'class': 'form-control'}),
             'category': forms.Select(choices=choice_list ,attrs= {'class': 'form-control'}),
             'body': forms.Textarea(attrs= {'class': 'form-control','placeholder':'Aqui va el contenido de tu posteo'}),
-            # no logro hacer que se suban las imagenes
-            # 'image': forms.ImageField(attrs={'class':'form-control'})
         }
 
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'title_tag','subtitle', 'body','image')
+        fields = ('title', 'title_tag','subtitle', 'body')
         
         widgets = {
             'title': forms.TextInput(attrs= {'class': 'form-control', 'placeholder':'Aqui va el titulo de tu blog'}),
@@ -36,5 +34,4 @@ class EditForm(forms.ModelForm):
             'subtitle': forms.TextInput(attrs= {'class': 'form-control','placeholder':'Aqui va el capitulo o el episodio'}),
             'date': forms.TextInput(attrs= {'class': 'form-control'}),
             'body': forms.Textarea(attrs= {'class': 'form-control','placeholder':'Aqui va el contenido de tu posteo'}),
-            # 'image': forms.ImageField(attrs={'class':'form-control'})
         }
