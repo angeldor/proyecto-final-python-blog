@@ -20,7 +20,7 @@
     <br />
     <br />
     {{post.date}}<br />
-    {{post.body | slice:":200"}}...
+    {{post.body | slice:":200" | safe}}...
     <a href="{% url 'artdetail' post.pk %}"><button class="btn btn-dark">Leer Más</button></a>
     <br />
     <img src="{{post.image}}">
