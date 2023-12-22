@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, ArtDetail, AddPost, EditPost, DeletePost, About, pageNotFound, AddCategoryView, CategoryView
+from .views import Home, ArtDetail, AddPost, EditPost, DeletePost, About, pageNotFound, AddCategoryView, CategoryView, CategoryListView
 from django.conf.urls import handler404
 
 urlpatterns = [
@@ -10,7 +10,7 @@ urlpatterns = [
     path('article/<int:pk>/delete', DeletePost.as_view(), name='delete_post'),
     path('about/', About.as_view(), name='about'),
     path('addcategory/', AddCategoryView.as_view(), name='addcategory'),
-    path('category/<str:cats>', CategoryView, name='category'),
-    
+    path('category/<str:cats>', CategoryListView, name='category_list'),
+    path('category-list/', CategoryView, name='category'),
 ]
 
