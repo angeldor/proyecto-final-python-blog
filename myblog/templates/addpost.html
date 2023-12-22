@@ -2,15 +2,21 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<h3>Nuevo Posteo!</h3>
+  <h3>Nuevo Posteo!</h3>
 
   <div class= "form-group">
     <form method="POST" enctype="multipart/form.data">
-      {% csrf_token %} {{form.as_p}}
+      {% csrf_token %} 
+      {{form.media}}
+      {{form.as_p}}
       <button class="btn btn-secondary">Guardar</button>
     </form>
-</div>
+  </div>
 
+  <script>
+    var name = "{{ user.id }}"
+    document.getElementById("autor").value = name
+  </script>
 {% else %}
 
 <h2 class="p-5 m-4 bg-warning">No haz iniciado sesion!</h2>

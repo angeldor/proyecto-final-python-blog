@@ -36,9 +36,12 @@ class AddPost(CreateView):
     form_class = PostForm
     template_name = 'addpost.html'
     
-def CategoryListView(request):
-    cat_menu_list = Category.objects.all()
-    return render(request, 'category_list.html', {'cat_menu_list'})
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AddPost, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
+    
     
 def CategoryView(request, cats):
     category_posts = Post.objects.filter(category=cats)
@@ -48,6 +51,12 @@ class AddCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields= '__all__'
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AddCategoryView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
     
 class EditPost(UpdateView):
     model = Post
@@ -61,6 +70,12 @@ class DeletePost(DeleteView):
     
 class About(TemplateView):
     template_name= 'about.html'
+    
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(About, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
     
 def pageNotFound(request, exception):
     return render(request,'404.html', status=404)

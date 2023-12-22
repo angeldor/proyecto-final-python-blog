@@ -1,17 +1,21 @@
 {% extends 'base.html' %} {% block content %}
-
+{% if user.is_authenticated %}
+  <h4 class="text-start">Hola de nuevo, <div class="fw-bold">{{user.username | title}}</div></h4>
+{% endif %}
 <h1 class="text-center p-5 fs-1">Posteos</h1>
+
 
 <ul class="listaPrincipal">
   {%for post in object_list %}
   <li>
     {{post.title}} -
-    {{post.subtitle}} - {{post.author.first_name}} {{post.author.last_name}}<br/>
+    {{post.subtitle}}  {{post.author.first_name}} {{post.author.last_name}}<br/>
     {% if user.is_authenticated %}
-    <a href="{% url 'category' post.category  %}">{{post.category | title}}</a>
-    {% comment %} {{post.category}} {% endcomment %}
-    <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary p-1 m-3">Editar</a>
-    <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger p-1 ">Borrar</a>
+      {% if user.id == post.author.id%}
+        <a href="{% url 'category' post.category  %}">{{post.category | title}}</a>
+        <a href="{% url 'edit_post' post.pk %}" class="btn btn-primary p-1 m-3">Editar</a>
+        <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger p-1 ">Borrar</a>
+      {% endif %}
     {% endif %}
     <br />
     <br />

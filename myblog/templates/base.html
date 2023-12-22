@@ -52,11 +52,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'addpost' %}">Nuevo Posteo</a>
               </li>
+              {% if user.id == 1 %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'addcategory' %}"
-                  >Nueva Categoria</a
-                >
+                  >Nueva Categoria</a>
               </li>
+              {% endif %}
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
               </li>
