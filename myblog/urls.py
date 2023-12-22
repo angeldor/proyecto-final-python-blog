@@ -10,7 +10,7 @@ urlpatterns = [
     path('article/<int:pk>/delete', DeletePost.as_view(), name='delete_post'),
     path('about/', About.as_view(), name='about'),
     path('addcategory/', AddCategoryView.as_view(), name='addcategory'),
-    path('category/<str:cats>', CategoryListView, name='category_list'),
-    path('category-list/', CategoryView, name='category'),
+    path('category/<str:cats>', CategoryView, name='category'),
+    path('category-list/', CategoryListView, name='category_list'),
 ]
 

@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render
 from django.http import request
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
@@ -9,6 +10,7 @@ from django.urls import reverse_lazy
 class Home(ListView):
     model = Post
     template_name = 'home.html'
+    cats = Category.objects.all()
     ordering = ['-date']
     
     def get_context_data(self, *args, **kwargs):
@@ -16,6 +18,7 @@ class Home(ListView):
         context = super(Home, self).get_context_data(*args, **kwargs)
         context["cat_menu"] = cat_menu
         return context
+        
     
     
 class ArtDetail(DetailView):
